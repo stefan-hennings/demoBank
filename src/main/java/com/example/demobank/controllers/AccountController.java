@@ -35,4 +35,9 @@ public class AccountController {
     public ResponseEntity<Account> withdraw(@RequestParam int amount, @RequestParam Long holderId) {
         return ResponseEntity.ok(accountService.withdraw(amount, holderId));
     }
+
+    @GetMapping("login")
+    public ResponseEntity<Account> login(@RequestParam Long holderId, @RequestParam String holder) {
+        return ResponseEntity.ok(accountService.login(holderId, holder));
+    }
 }

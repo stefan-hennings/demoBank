@@ -41,4 +41,12 @@ public class AccountService {
     public List<Account> getAllAccounts(){
         return accountRepository.findAll();
     }
+
+    public Account login(Long holderId, String holder) {
+        Account account = accountRepository.findById(holderId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not find user"));
+        if(account.getHolder().equalsIgnoreCase(holder)) {
+            return account;
+        } else throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Bad credentials");
+    }
 }
