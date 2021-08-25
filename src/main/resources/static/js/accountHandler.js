@@ -23,7 +23,9 @@ const openNewAccount = () => {
     if(holderName) {
         axios.post(addAccount+holderName)
             .then((response) => {
+                $("#newAccountHolder").val("");
                 loadUserAccount(response.data.id, response.data.holder)
+                $("#newAccountModal").modal("hide")
             })
             .catch((error) => {
                 if(error.response) {
