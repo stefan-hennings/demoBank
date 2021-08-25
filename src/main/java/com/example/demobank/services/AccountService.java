@@ -26,15 +26,17 @@ public class AccountService {
     
     public Account deposit(int amount, Long holderId) {
         Account account = accountRepository.findById(holderId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not find user"));
-        account.addBalance(amount);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fel kontonummer"));
+            account.addBalance(amount);
+
+
         return accountRepository.save(account);
         
     }
     
     public Account withdraw(int amount, Long holderId) {
         Account account = accountRepository.findById(holderId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not find user"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fel kontonummer"));
         account.removeBalance(amount);
         return accountRepository.save(account);
     }
@@ -44,9 +46,9 @@ public class AccountService {
 
     public Account login(Long holderId, String holder) {
         Account account = accountRepository.findById(holderId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not find user"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fel kontonummer"));
         if(account.getHolder().equalsIgnoreCase(holder)) {
             return account;
-        } else throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Bad credentials");
+        } else throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Fel namn");
     }
 }

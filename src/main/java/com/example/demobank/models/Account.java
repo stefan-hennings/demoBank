@@ -43,13 +43,13 @@ public class Account {
            return this;
         }
         
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient funds");
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Täckning saknas!");
     }
     
     private boolean isPositiveAmount(int amount) {
         if(amount>0) {
             return true;
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot use negative numbers");
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Negativt belopp ej tillåtet!");
     }
 }
