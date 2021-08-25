@@ -1,10 +1,12 @@
+# docker version
 version: '3'
+
 services:
-  db:
-    image: mysql:latest
-    container_name: mysql
+  postgres-db:
+    image: postgres:alpine
+    container_name: backend_2_lab_local
     ports:
-      - 3307:3306
+      - 3535:5432
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: lab1
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password

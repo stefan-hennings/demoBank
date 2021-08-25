@@ -1,24 +1,26 @@
+# docker version
 version: '3'
-services:
-  db:
-    image: mysql:latest
-    container_name: mysql-prod
-    ports:
-      - 3307:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: lab1
 
-  spring_app:
+services:
+  postgres-db:
+    image: postgres:alpine
+    container_name: backend_2_lab
+    ports:
+      - 5432:5432 # first port is what you connect to the db with
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+
+  application:
     image: patrikjmelander/demo_bank:latest
-    container_name: demo_bank
+    container_name: bank_app
     ports:
       - 8080:8080
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      SPRING_DB_URL: jdbc:mysql://db:3307/
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      SPRING_DB_URL: jdbc:postgresql://postgres-db:5432/
       SPRING_JPA_HIBERNATE_DDL-AUTO: update
       SPRING_PROFILES_ACTIVE: prod
     depends_on:
-      - db
+      - postgres-db
