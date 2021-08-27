@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
  */
 class AccountServiceTest {
     Account account = new Account("Patrik");
-
+/*
     @Test
     void addAccountTest() {
         AccountRepository accountRepository = mock(AccountRepository.class);
@@ -39,7 +39,7 @@ class AccountServiceTest {
         //when(accountRepository.findById(id)).thenReturn(account);
 
     }
-/*
+
     @Test
     void withdrawTest() {
         accountRepository.findById
