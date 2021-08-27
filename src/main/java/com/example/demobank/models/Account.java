@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class Account {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Täckning saknas!");
     }
     
-    private boolean isPositiveAmount(int amount) {
+    protected boolean isPositiveAmount(int amount) {
         if(amount>0) {
             return true;
         }
