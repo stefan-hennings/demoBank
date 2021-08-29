@@ -49,7 +49,7 @@ class AccountTest {
 
     @Test
     void isPositiveAmountTrueTest(){
-        assertEquals(true,account.isPositiveAmount(100));
+        assertTrue(account.isPositiveAmount(100));
     }
 
     @Test
