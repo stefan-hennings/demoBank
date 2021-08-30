@@ -11,15 +11,20 @@ services:
       POSTGRES_PASSWORD: password
 
   application:
-    image: patrikjmelander/demo_bank:latest
+    image: patrikjmelander/demobank-postgress:latest
     container_name: bank_app
     ports:
       - 8080:8080
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
-      SPRING_DB_URL: jdbc:postgresql://postgres-db:5432/
       SPRING_JPA_HIBERNATE_DDL-AUTO: update
       SPRING_PROFILES_ACTIVE: prod
     depends_on:
       - postgres-db
+
+  risk-api:
+    container_name: risk-api
+    image: daneidmark/risk:0.0.1
+    ports:
+      - 8082:8080
