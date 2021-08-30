@@ -23,6 +23,7 @@ services:
       SPRING_PROFILES_ACTIVE: prod
     depends_on:
       - postgres-db
+      - risk-api
 
   risk-api:
     container_name: risk-api
