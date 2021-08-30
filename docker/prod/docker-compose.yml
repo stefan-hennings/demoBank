@@ -1,6 +1,5 @@
 # docker version
 version: '3'
-
 services:
   postgres-db:
     image: postgres:alpine

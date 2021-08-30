@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.Entity;
@@ -43,13 +44,13 @@ public class Account {
            return this;
         }
         
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient funds");
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Täckning saknas!");
     }
     
-    private boolean isPositiveAmount(int amount) {
+    protected boolean isPositiveAmount(int amount) {
         if(amount>0) {
             return true;
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot use negative numbers");
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Negativt belopp ej tillåtet!");
     }
 }
