@@ -6,7 +6,7 @@ services:
     image: postgres:alpine
     container_name: backend_2_lab_local
     ports:
-      - 3535:5432
+      - 5432:5432
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
