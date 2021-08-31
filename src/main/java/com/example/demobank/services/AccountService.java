@@ -6,6 +6,7 @@ import com.example.demobank.repositories.AccountRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class AccountService {
     private String baseUrl= "http://localhost:";
     private String riskPort= "8082/";
     private String endpoint = "risk/";
+
+    @Value("${api_url}")
+    private String url;
     
     private final AccountRepository accountRepository;
 
@@ -27,7 +31,7 @@ public class AccountService {
     
     public Account addAccount(String holder) throws JsonProcessingException {
 
-        ResponseEntity<String> forEntity = restTemplate.getForEntity(baseUrl + riskPort + endpoint + holder, String.class);
+        ResponseEntity<String> forEntity = restTemplate.getForEntity(url + holder, String.class);
 
         System.out.println(forEntity.getBody());
 
