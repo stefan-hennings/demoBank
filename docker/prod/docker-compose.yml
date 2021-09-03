@@ -21,13 +21,12 @@ services:
       SPRING_DB_URL: jdbc:postgresql://postgres-db:5432/
       SPRING_JPA_HIBERNATE_DDL-AUTO: none
       SPRING_PROFILES_ACTIVE: prod
-      RISK: risk-api:8080
+      RISK_URL: https://riskService:8081/
     depends_on:
       - postgres-db
-      - risk-api
 
-  risk-api:
-    container_name: risk-api
+  riskService:
+    container_name: riskService
     image: daneidmark/risk:0.0.1
     ports:
-      - 8082:8080
+      - 8081:8080

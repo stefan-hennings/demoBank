@@ -22,8 +22,8 @@ public class AccountService {
     private String riskPort= "8082/";
     private String endpoint = "risk/";
 
-    @Value("${api_url}")
-    private String url;
+    @Value("${app.risk-service-url}")
+    private String riskServiceBaseUrl;
     
     private final AccountRepository accountRepository;
 
@@ -31,7 +31,7 @@ public class AccountService {
     
     public Account addAccount(String holder) throws JsonProcessingException {
 
-        ResponseEntity<String> forEntity = restTemplate.getForEntity(url + holder, String.class);
+        ResponseEntity<String> forEntity = restTemplate.getForEntity(riskServiceBaseUrl + endpoint + holder, String.class);
 
         System.out.println(forEntity.getBody());
 

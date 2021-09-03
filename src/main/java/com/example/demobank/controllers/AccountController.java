@@ -28,14 +28,14 @@ public class AccountController {
         return ResponseEntity.ok(accountService.addAccount(holder));
     }
     
-    @PostMapping("/deposit")
+    @PutMapping("/deposit")
     public ResponseEntity<Account> deposit(@RequestParam int amount, @RequestParam Long holderId){
         log.info("Deposit >>> amount: " + amount + " & holderId: " +holderId);
         return ResponseEntity.ok(accountService.deposit(amount, holderId));
     }
     
     
-    @PostMapping("/withdraw")
+    @PutMapping("/withdraw")
     public ResponseEntity<Account> withdraw(@RequestParam int amount, @RequestParam Long holderId) {
         return ResponseEntity.ok(accountService.withdraw(amount, holderId));
     }
