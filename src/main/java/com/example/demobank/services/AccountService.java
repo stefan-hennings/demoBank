@@ -18,11 +18,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountService {
-    private String baseUrl= "http://localhost:";
-    private String riskPort= "8082/";
     private String endpoint = "risk/";
 
-    @Value("${app.risk-service-url}")
+    @Value("${risk-service-url}")
     private String riskServiceBaseUrl;
     
     private final AccountRepository accountRepository;
