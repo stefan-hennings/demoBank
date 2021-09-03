@@ -31,7 +31,7 @@ public class AccountService {
 
         ResponseEntity<String> forEntity = restTemplate.getForEntity(riskServiceBaseUrl + endpoint + holder, String.class);
 
-        System.out.println(forEntity.getBody());
+        //System.out.println(forEntity.getBody());
 
         ObjectMapper mapper = new ObjectMapper();
         ApprovalDto approvalDto = mapper.readValue(forEntity.getBody(), ApprovalDto.class);
