@@ -4,7 +4,7 @@ version: '3'
 services:
   postgres-db:
     image: postgres:alpine
-    container_name: backend_2_lab
+    container_name: backend_2_lab_local
     ports:
       - 5433:5432 # first port is what you connect to the db with
     environment:

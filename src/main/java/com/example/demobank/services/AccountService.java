@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
-
+@ComponentScan
 @Service
 @RequiredArgsConstructor
 public class AccountService {
@@ -28,6 +29,7 @@ public class AccountService {
     RestTemplate restTemplate = new RestTemplate();
     
     public Account addAccount(String holder) throws JsonProcessingException {
+        System.out.println(riskServiceBaseUrl + endpoint + holder);
 
         ResponseEntity<String> forEntity = restTemplate.getForEntity(riskServiceBaseUrl + endpoint + holder, String.class);
 
